@@ -40,10 +40,6 @@
     "sendgrid": "1.5.0",
     "sequelize": "^2.0.0-rc8",
     "sqlite3": "^3.0.4",
-    "twilio": "^1.10.0",
-    "bower": "0.6.x"
-  },
-  "scripts": {
-    "postinstall": "bower install"
+    "twilio": "^1.10.0"
   }
 }
