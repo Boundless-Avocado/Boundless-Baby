@@ -8,6 +8,7 @@ module.exports = function (app, express) {
   var userRouter = express.Router();
   var groupRouter = express.Router();
   var clientRouter = express.Router();
+  var facebookRouter = express.Router();
 
   app.use(morgan('dev'));
   app.use(bodyParser.urlencoded({extended: true}));
@@ -18,6 +19,7 @@ module.exports = function (app, express) {
   app.use('/api/users', userRouter); // use user router for all user request
   app.use('/api/groups', groupRouter); // use group router for group request
   app.use('/api/clients', clientRouter); // use client router for all client request
+  app.use('/auth/facebook', facebookRouter); // use facebook router for facebook authorization
 
 
   app.use(helpers.errorLogger);
@@ -27,4 +29,5 @@ module.exports = function (app, express) {
   require('./users/userRoutes.js')(userRouter);
   require('./groups/groupRoutes.js')(groupRouter);
   require('./clients/clientRoutes.js')(clientRouter);
+  require('/facebook/facebookRoutes.js')(facebookRouter);
 };
