@@ -31,3 +31,6 @@ client/lib
 
 # SQLite database
 *.sqlite
+
+#API Keys
+config.js
