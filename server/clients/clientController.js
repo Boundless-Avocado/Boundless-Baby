@@ -1,12 +1,7 @@
-var keys = require('../../config.js');
+// var keys = require('../keys.js');
 
-var TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID || keys.TWILIO_ACCOUNT_SID;
-var TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN || keys.TWILIO_AUTH_TOKEN;
-var SENDGRID_API_USER = process.env.SENDGRID_API_USER || keys.SENDGRID_API_USER;
-var SENDGRID_API_KEY = process.env.SENDGRID_API_KEY || keys.SENDGRID_API_KEY;
-
-var twilio = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
-var sendgrid = require('sendgrid')(SENDGRID_API_USER, SENDGRID_API_KEY);
+var twilio = require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+var sendgrid = require('sendgrid')(process.env.SENDGRID_API_USER, process.env.SENDGRID_API_KEY);
 
 module.exports = {
   sendSMS: function(message, number) {
