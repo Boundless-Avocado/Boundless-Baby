@@ -1,5 +1,5 @@
 var passport = require('passport'),
-    FacebookStrategy = require('passport-facebook').Strategy,
+    FacebookStrategy = require('passport-facebook').Strategy;
     // keys = require('../../config.js');
 
 var FACEBOOK_APP_ID = process.env.FACEBOOK_APP_ID;
