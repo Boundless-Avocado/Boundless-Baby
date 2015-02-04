@@ -4,7 +4,7 @@
   "description": "Meetups on the fly",
   "main": "server.js",
   "scripts": {
-    "test": "karma start --browsers PhantomJS"
+    "postinstall": "./node_modules/bower/bin/bower install"
   },
   "author": "",
   "license": "ISC",
@@ -24,13 +24,12 @@
     "karma-phantomjs-launcher": "^0.1.4",
     "mocha": "^1.20.1"
   },
-  "scripts": {
-    "postinstall": "./node_modules/bower/bin/bower install"
-  },
   "dependencies": {
     "body-parser": "^1.4.3",
     "bower": "~1.3.3",
+    "cookie-parser": "^1.3.3",
     "express": "^4.4.5",
+    "express-session": "^1.10.2",
     "grunt-contrib-jshint": "^0.11.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-karma": "^0.10.1",
@@ -41,6 +40,8 @@
     "morgan": "^1.1.1",
     "multiparty": "^4.1.1",
     "mysql": "^2.5.4",
+    "passport": "^0.2.1",
+    "passport-facebook": "^1.0.3",
     "sendgrid": "1.5.0",
     "sequelize": "^2.0.0-rc8",
     "sqlite3": "^3.0.4",
