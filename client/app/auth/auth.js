@@ -22,11 +22,11 @@ angular.module('boundless.auth', [])
 
 		//on signup, user is issued token
 	$scope.signup = function() {
-		console.log($scope.user);
+		console.log("user is: ", $scope.user);
 		//storing username in local storage to retrieve later
 		$window.localStorage.setItem('username', $scope.user.username);
-		
-		Auth.signup($scope.user) 
+
+		Auth.signup($scope.user)
 				//after singup, user should be redirected to confirmation
 				//page while they wait for code
 			.then(function() {
@@ -40,7 +40,7 @@ angular.module('boundless.auth', [])
 
 		//user provides confirmation code to finalize signup
 	// $scope.confirm = function() {
-	// 	Auth.confirm($scope.code) 
+	// 	Auth.confirm($scope.code)
 	// 		.then(function(token) {
 	// 				//this is where we will will set a token/cookie/jwt
 	// 			$window.localStorage.setItem('boundless-avocado', token);

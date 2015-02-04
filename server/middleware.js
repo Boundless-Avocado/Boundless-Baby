@@ -17,7 +17,7 @@ module.exports = function (app, express) {
   app.use(morgan('dev'));
   app.use(cookieParser());
   app.use(bodyParser.urlencoded({extended: true}));
-  app.use(bodyParser.json({type: 'application/*+json'}));
+  app.use(bodyParser.json());
   app.use(session({ secret: 'keyboard cat'}));
   app.use(passport.initialize());
   app.use(passport.session());
