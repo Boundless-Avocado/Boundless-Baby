@@ -37,6 +37,6 @@ module.exports = function (app) {
     passport.authenticate('facebook', { failureRedirect:'/login'}),
     function(req, res) {
       console.log('authenticated');
-      res.redirect('http://google.com');
+      res.redirect('http://localhost:8080/#/groups');
     });
 };
