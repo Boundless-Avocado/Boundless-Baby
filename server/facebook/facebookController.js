@@ -18,7 +18,7 @@ module.exports = function (app) {
   passport.use(new FacebookStrategy({
       clientID: FACEBOOK_APP_ID,
       clientSecret: FACEBOOK_APP_SECRET,
-      callbackURL: "http://localhost:8080/auth/facebook/callback"
+      callbackURL: "http://boundlessbaby.herokuapp.com/auth/facebook/callback"
     },
     function(accessToken, refreshToken, profile, done) {
       process.nextTick(function () {
@@ -37,6 +37,6 @@ module.exports = function (app) {
     passport.authenticate('facebook', { failureRedirect:'/login'}),
     function(req, res) {
       console.log('authenticated');
-      res.redirect('http://localhost:8080/#/groups');
+      res.redirect('http://boundlessbaby.herokuapp.com/#/groups');
     });
 };
