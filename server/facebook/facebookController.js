@@ -2,8 +2,8 @@ var passport = require('passport'),
     FacebookStrategy = require('passport-facebook').Strategy,
     keys = require('../../config.js');
 
-var FACEBOOK_APP_ID = keys.FACEBOOK_APP_ID;
-var FACEBOOK_APP_SECRET = keys.FACEBOOK_APP_SECRET;
+var FACEBOOK_APP_ID = process.env.FACEBOOK_APP_ID || keys.FACEBOOK_APP_ID;
+var FACEBOOK_APP_SECRET = process.env.FACEBOOK_APP_SECRET || keys.FACEBOOK_APP_SECRET;
 
 module.exports = function (app) {
 
