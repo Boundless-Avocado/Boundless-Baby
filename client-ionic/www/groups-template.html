@@ -32,7 +32,7 @@
           <button class="button button-icon" ng-click="toggleProjects()">
             <i class="icon ion-navicon"></i>
           </button>
-          <h1 class="title">{{activeProject.title}}</h1>
+          <h1 class="title">Groups {{tasks.title}}</h1>
           <!-- New Task button-->
           <button class="button button-icon" ng-click="newTask()">
             <i class="icon ion-compose"></i>
@@ -40,15 +40,14 @@
         </ion-header-bar>
         <ion-content scroll="false">
           <ion-list>
-            <ion-item ng-repeat="task in activeProject.tasks" ng-controller="GroupsController">
+            <ion-item ng-repeat="task in tasks" ng-controller="GroupsController">
               
-                <div>{{task.title}}
-
-                <button class="button button-balanced" ng-click="joinGroup(task.title)">Join</button>
-                <button class="button button-balanced" ng-click="pingGroup('test')">Ping</button>
-                <button class="button button-balanced">Leave</button>
-                <button class="button button-balanced">Invite</button>
-
+                <div>
+                  {{task.title}}
+                  <button class="button button-balanced" ng-click="joinGroup(task.title)">Join</button>
+                  <button class="button button-balanced" ng-click="pingGroup('test')">Ping</button>
+                  <button class="button button-balanced">Leave</button>
+                  <button class="button button-balanced">Invite</button>
                 </div>
             </ion-item>
           </ion-list>
