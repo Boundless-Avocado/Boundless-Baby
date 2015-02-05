@@ -26,7 +26,12 @@ module.exports = function (app) {
           req.body.username = user.username;
           groupController.leave(req, res);
         });
-      
+      } else if (req.body.Body.slice(0,5).toUpperCase() === "SHOW "){
+        groupController.find(req.body.Body.slice(5), function (group) {
+          req.group = group;
+          req.body.username = user.username;
+          groupController.show(req, res);
+        });
       // } else if (req.body.Body === "BROWSE"){
       //   groupController.browse(req, res);
 

@@ -107,5 +107,27 @@ module.exports = {
         console.log(err);
       });
     });
+  },
+
+  show: function(req, res){
+    if (req.user) {
+      req.body.username = req.user.username;  // lame hack to not fail on username lookup if already done (i.e. Twilio)
+    }
+  
+    require('../users/userController.js').findByUsername(req.body.username, function(user) {
+      req.user = user;
+      req.group.createPing({UserId: req.user.id});
+      req.group.getUsers()
+      .then(function (users) {
+        var names = '';
+        users.forEach(function (user) {
+          names += user.username + ' ';
+        });
+        clients.sendSMS('Users in ' + req.group.name + ' include: ' + names, req.user.phone);
+        res.end('Showed ' + users.length + ' members of ' + req.group.name);
+      });
+    });
+
   }
+
 };
