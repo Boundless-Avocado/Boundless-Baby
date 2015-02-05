@@ -94,5 +94,18 @@ module.exports = {
         res.end('Pinged ' + users.length + ' members of ' + req.group.name);
       });
     });
+  },
+
+  leave: function(req, res){
+    require('../users/userModel.js').findOne({where: {username: req.body.username}})
+    .then(function (user) {
+      user.removeGroup(req.group.id)
+      .then(function (result) {
+        res.end(JSON.stringify(result));
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+    });
   }
 };

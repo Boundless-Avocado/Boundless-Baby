@@ -20,7 +20,13 @@ module.exports = function (app) {
           'username': req.user.username
         };
         groupController.create(req, res);
-
+      } else if (req.body.Body.slice(0,6).toUpperCase() === "LEAVE ") {
+        groupController.find(req.body.Body.slice(6), function (group) {
+          req.group = group;
+          req.body.username = user.username;
+          groupController.leave(req, res);
+        });
+      }
       // } else if (req.body.Body === "BROWSE"){
       //   groupController.browse(req, res);
 
