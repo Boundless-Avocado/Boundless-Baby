@@ -113,7 +113,7 @@ module.exports = {
     if (req.user) {
       req.body.username = req.user.username;  // lame hack to not fail on username lookup if already done (i.e. Twilio)
     }
-  
+
     require('../users/userController.js').findByUsername(req.body.username, function(user) {
       req.user = user;
       req.group.createPing({UserId: req.user.id});
@@ -130,10 +130,10 @@ module.exports = {
   },
 
   invite: function(req, res){
-    require('../users/userController.js').findByPhone(req.inviteeNumber, function(user) {
+    require('../users/userController.js').findByPhone(req.body.inviteeNumber, function(user) {
       req.user = user;
       req.group.createPing({UserId: req.user.id});
-      clients.sendSMS(req.user.username + ' invited you to join ' + req.group.name + '! Reply with "join ' + req.group.name + '" to join group.', req.inviteeNumber); 
+      clients.sendSMS(req.user.username + ' invited you to join ' + req.group.name + '! Reply with "join ' + req.group.name + '" to join group.', req.body.inviteeNumber);
       res.end('Invite sent!');
     });
   }

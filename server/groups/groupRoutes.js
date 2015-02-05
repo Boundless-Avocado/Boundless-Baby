@@ -14,4 +14,7 @@ module.exports = function (app) {
 
   app.get('/:group/pings/', groupController.history);
   app.post('/:group/pings/', groupController.ping);
+
+  app.post('/:group/leave/', groupController.leave);
+  app.post('/:group/invite/', groupController.invite);
 };

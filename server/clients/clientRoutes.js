@@ -40,7 +40,7 @@ module.exports = function (app) {
           groupController.find(messageBody[1], function (group) {
             req.group = group;
             req.body.username = user.username;
-            req.inviteeNumber = inviteeNumber;
+            req.body.inviteeNumber = inviteeNumber;
             groupController.invite(req, res);
           });
         // } else if (req.body.Body === "BROWSE"){
@@ -68,7 +68,7 @@ module.exports = function (app) {
               throw err;
             }
           }
-          
+
           req.body.username = newUsername;
           req.body.email = newEmail;
           req.body.phone = newPhoneNum;
@@ -79,7 +79,7 @@ module.exports = function (app) {
         } else {
           var newPhoneNum = req.body.From.slice(2);
           var signupMessage = 'To join GuacFriends, please respond to this message with "signup <username> <email>"';
-          clients.sendSMS(signupMessage,newPhoneNum); 
+          clients.sendSMS(signupMessage,newPhoneNum);
           res.end('Thanks for signing up!');
         }
       }
