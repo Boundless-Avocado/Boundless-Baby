@@ -104,7 +104,9 @@ angular.module('boundless.services', [])
 		joinGroup: joinGroup,
 		pingGroup: pingGroup,
 		getUsers: getUsers,
-		userGroups: userGroups
+		userGroups: userGroups,
+		leaveGroup: leaveGroup,
+		inviteToGroup: inviteToGroup
 	};
 })
 
