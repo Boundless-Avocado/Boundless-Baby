@@ -3,7 +3,8 @@ angular.module('boundless', [
 	'ui.router',
 	'boundless.groups',
 	'boundless.services',
-	'boundless.auth'
+	'boundless.auth',
+	'boundless.group-template'
 ])
 	//using ui-router to route client
 .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
