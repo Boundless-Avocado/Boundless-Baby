@@ -46,7 +46,7 @@
                   <button class="button button-balanced" ng-click="joinGroup(group.name)">Join</button>
                   <button class="button button-balanced" ng-click="pingGroup(group.name)">Ping</button>
                   <button class="button button-balanced" ng-click="leaveGroup(group)">Leave</button>
-                  <button class="button button-balanced" ng-click="inviteToGroup(group)">Invite</button>
+                  <button class="button button-balanced" ng-click="openInviteModal()">Invite</button>
                 </div>
             </ion-item>
           </ion-list>
@@ -87,5 +87,37 @@
    </div>
 
  </script>
+
+  <script id="invite-friends.html" type="text/ng-template">
+
+   <div class="modal">
+
+     <!-- Modal header bar -->
+     <ion-header-bar class="bar-secondary">
+       <h1 class="title">Invite your friend!</h1>
+       <button class="button button-clear button-energized" ng-click="closeInviteModal()">Cancel</button>
+     </ion-header-bar>
+
+     <!-- Modal content area -->
+     <ion-content>
+
+       <form ng-controller="GroupsController" ng-submit="createGroup(group)">
+         <div class="list">
+           <label class="item item-input">
+             <input type="text" placeholder="What's your friend's name?" ng-model="group.name">
+           </label>
+           <label class="item item-input">
+             <input type="tel" placeholder="What's your friends phone number?" ng-model="group.description">
+           </label>
+         </div>
+         <div class="padding">
+           <button type="submit" class="button button-block button-energized" ng-click="displayGroup(group)">Invite Friend</button>
+         </div>
+       </form>
+
+     </ion-content>
+
+   </div>
+  </script> 
  </body>
 </html>
