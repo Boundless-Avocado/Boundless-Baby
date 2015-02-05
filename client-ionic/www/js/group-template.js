@@ -7,7 +7,7 @@ angular.module('boundless.group-template', ['ionic'])
 
   // Create and load the Modal
   $ionicModal.fromTemplateUrl('new-group.html', function(modal) {
-    $scope.taskModal = modal;
+    $scope.groupModal = modal;
   }, {
     scope: $scope,
     animation: 'slide-in-up'
@@ -16,20 +16,20 @@ angular.module('boundless.group-template', ['ionic'])
   // Called when the form is submitted
   $scope.createGroup = function(group) {
     $scope.groups.push({
-      title: task.title
+      title: group.title
     });
-    $scope.taskModal.hide();
-    task.title = "";
+    $scope.groupModal.hide();
+    group.title = "";
   };
 
-  // Open our new task modal
-  $scope.newTask = function() {
-    $scope.taskModal.show();
+  // Open our new group modal
+  $scope.newGroup = function() {
+    $scope.groupModal.show();
   };
 
-  // Close the new task modal
-  $scope.closeNewTask = function() {
-    $scope.taskModal.hide();
+  // Close the new group modal
+  $scope.closeNewGroup = function() {
+    $scope.groupModal.hide();
   };
 
 });
