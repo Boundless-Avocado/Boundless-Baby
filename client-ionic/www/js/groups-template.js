@@ -14,7 +14,7 @@ angular.module('boundless.group-template', ['ionic'])
   });
 
   // Called when the form is submitted
-  $scope.createGroup = function(group) {
+  $scope.displayGroup = function(group) {
     $scope.groups.push({
       name: group.name
     });
