@@ -119,6 +119,14 @@ angular.module('boundless.services', [])
 		return !!$window.localStorage.getItem('username');
 	};
 
+	var leaveGroup = function(){
+
+	}
+
+	var invite = function(){
+
+	}
+
 	return {
 		signin: signin,
 		signup: signup,
