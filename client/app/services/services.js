@@ -74,6 +74,30 @@ angular.module('boundless.services', [])
 		})
 	};
 
+	var leaveGroup = function(data){
+		console.log(data.name)
+		return $http({
+				method: 'GET',
+				url: '/api/groups/' + data.name + '/',
+				data: data
+		})
+		.then(function(resp) {
+			return resp.data;
+		})
+	}
+
+	var inviteToGroup = function(data){
+		console.log(data.name)
+		return $http({
+				method: 'GET',
+				url: '/api/groups/' + data.name + '/',
+				data: data
+		})
+		.then(function(resp) {
+			return resp.data;
+		})
+	}
+
 	return {
 		getGroups: getGroups,
 		createGroup: createGroup,
@@ -118,14 +142,6 @@ angular.module('boundless.services', [])
 	var isAuth = function() {
 		return !!$window.localStorage.getItem('username');
 	};
-
-	var leaveGroup = function(){
-
-	}
-
-	var invite = function(){
-
-	}
 
 	return {
 		signin: signin,
