@@ -127,7 +127,15 @@ module.exports = {
         res.end('Showed ' + users.length + ' members of ' + req.group.name);
       });
     });
+  },
 
+  invite: function(req, res){
+    require('../users/userController.js').findByPhone(req.inviteeNumber, function(user) {
+      req.user = user;
+      req.group.createPing({UserId: req.user.id});
+      clients.sendSMS(req.user.username + ' invited you to join ' + req.group.name + '! Reply with "join ' + req.group.name + '" to join group.', req.inviteeNumber); 
+      res.end('Invite sent!');
+    });
   }
 
 };
