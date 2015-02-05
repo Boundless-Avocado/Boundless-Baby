@@ -26,7 +26,7 @@ module.exports = function (app) {
           req.body.username = user.username;
           groupController.leave(req, res);
         });
-      }
+      
       // } else if (req.body.Body === "BROWSE"){
       //   groupController.browse(req, res);
 
