@@ -9,7 +9,7 @@
 
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
-    <script src="js/group-template.js"></script>
+    <script src="js/groups-template.js"></script>
 
     <script src="../../client/lib/angular/angular.js"></script>
     <script src="../../client/lib/angular-ui-router/release/angular-ui-router.js"></script>
@@ -31,7 +31,7 @@
           <button class="button button-icon">
             <i class="icon ion-navicon"></i>
           </button>
-          <h1 class="title">Groups {{groups.title}}</h1>
+          <h1 class="title">Groups {{groups.name}}</h1>
           <!-- New Group button-->
           <button class="button button-icon" ng-click="newGroup()">
             <i class="icon ion-compose"></i>
@@ -42,11 +42,11 @@
             <ion-item ng-repeat="group in groups" ng-controller="GroupsController">
               
                 <div>
-                  {{group.title}}
-                  <button class="button button-balanced" ng-click="joinGroup(group.title)">Join</button>
-                  <button class="button button-balanced" ng-click="pingGroup('test')">Ping</button>
-                  <button class="button button-balanced" ng-click="pingGroup('test')">Leave</button>
-                  <button class="button button-balanced" ng-click="invite('test')">Invite</button>
+                  {{group.name}}
+                  <button class="button button-balanced" ng-click="joinGroup(group.name)">Join</button>
+                  <button class="button button-balanced" ng-click="pingGroup(group)">Ping</button>
+                  <button class="button button-balanced" ng-click="leaveGroup(group)">Leave</button>
+                  <button class="button button-balanced" ng-click="inviteToGroup(group)">Invite</button>
                 </div>
             </ion-item>
           </ion-list>
@@ -71,7 +71,7 @@
        <form ng-submit="createGroup(group)">
          <div class="list">
            <label class="item item-input">
-             <input type="text" placeholder="What's your group name?" ng-model="group.title">
+             <input type="text" placeholder="What's your group name?" ng-model="group.name">
            </label>
            <label class="item item-input">
              <input type="text" placeholder="Describe your group?" ng-model="group.description">

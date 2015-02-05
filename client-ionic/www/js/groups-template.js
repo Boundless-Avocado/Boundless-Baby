@@ -16,10 +16,10 @@ angular.module('boundless.group-template', ['ionic'])
   // Called when the form is submitted
   $scope.createGroup = function(group) {
     $scope.groups.push({
-      title: group.title
+      name: group.name
     });
     $scope.groupModal.hide();
-    group.title = "";
+    group.name = "";
   };
 
   // Open our new group modal
