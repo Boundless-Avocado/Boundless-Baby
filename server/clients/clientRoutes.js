@@ -32,6 +32,16 @@ module.exports = function (app) {
           req.body.username = user.username;
           groupController.show(req, res);
         });
+      } else if(req.body.Body.slice(0,7).toUpperCase() === "INVITE "){
+        var messageBody = req.body.Body.split(' ');
+        var inviteeNumber = messageBody[2];
+
+        groupController.find(messageBody[1], function (group) {
+          req.group = group;
+          req.body.username = user.username;
+          req.inviteeNumber = inviteeNumber;
+          groupController.invite(req, res);
+        });
       // } else if (req.body.Body === "BROWSE"){
       //   groupController.browse(req, res);
 
