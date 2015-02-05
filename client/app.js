@@ -3,12 +3,12 @@ angular.module('boundless', [
 	'ui.router',
 	'boundless.groups',
 	'boundless.services',
-	'boundless.auth',
-	'boundless.group-template'
+	'boundless.auth'
+	// 'boundless.group-template'
 ])
 	//using ui-router to route client
 .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
-		
+
 		//reroutes to '/' as default
 	$urlRouterProvider.otherwise('/');
 
@@ -49,7 +49,7 @@ angular.module('boundless', [
 		.state('usergroups', {
 			templateUrl: 'app/groups/usergroups.html',
 			controller: 'GroupsController',
-			url: '/usergroups' 
+			url: '/usergroups'
 		})
 
 		.state('/', {
@@ -68,7 +68,7 @@ angular.module('boundless', [
 			templateUrl: 'app/auth/parent.html',
 			controller: 'BoundlessController',
 			url: '/'
-		});	
+		});
 		// We add our $httpInterceptor into the array
 		// of interceptors. Think of it like middleware for your ajax calls
 	$httpProvider.interceptors.push('AttachTokens');
@@ -82,9 +82,9 @@ angular.module('boundless', [
 	};
 
 }])
-	
+
 .factory('AttachTokens', function ($window) {
-		//here we attach tokens issued by server in order to create sessions. 
+		//here we attach tokens issued by server in order to create sessions.
 		//generic for now, need to update url once server is up
 	var attach = {
 		request: function (object) {
