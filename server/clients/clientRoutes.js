@@ -12,6 +12,7 @@ module.exports = function (app) {
           groupController.find(req.body.Body.slice(5), function (group) {
             req.group = group;
             req.body.username = user.username;
+            groupController.joinPing(req, res);
             groupController.join(req, res);
           });
 
