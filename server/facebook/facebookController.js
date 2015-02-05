@@ -18,6 +18,7 @@ module.exports = function (app) {
   passport.use(new FacebookStrategy({
       clientID: FACEBOOK_APP_ID,
       clientSecret: FACEBOOK_APP_SECRET,
+      // callbackURL: "http://localhost:5000/auth/facebook/callback"
       callbackURL: "http://boundlessbaby.herokuapp.com/auth/facebook/callback"
     },
     function(accessToken, refreshToken, profile, done) {
