@@ -22,31 +22,31 @@
     <!-- Needed for Cordova/PhoneGap (will be a 404 during development) -->
     <script src="cordova.js"></script>
   </head>
-  <body ng-app="boundless" ng-controller="GroupCtrl">
+  <body ng-app="boundless" ng-controller="GroupTemplateController">
     <ion-side-menus>
       {% raw %}
       <!-- Center content -->
       <ion-side-menu-content>
         <ion-header-bar class="bar-balanced">
-          <button class="button button-icon" ng-click="toggleProjects()">
+          <button class="button button-icon">
             <i class="icon ion-navicon"></i>
           </button>
-          <h1 class="title">Groups {{tasks.title}}</h1>
-          <!-- New Task button-->
-          <button class="button button-icon" ng-click="newTask()">
+          <h1 class="title">Groups {{groups.title}}</h1>
+          <!-- New Group button-->
+          <button class="button button-icon" ng-click="newGroup()">
             <i class="icon ion-compose"></i>
           </button>
         </ion-header-bar>
         <ion-content scroll="false">
           <ion-list>
-            <ion-item ng-repeat="task in tasks" ng-controller="GroupsController">
+            <ion-item ng-repeat="group in groups" ng-controller="GroupsController">
               
                 <div>
-                  {{task.title}}
-                  <button class="button button-balanced" ng-click="joinGroup(task.title)">Join</button>
+                  {{group.title}}
+                  <button class="button button-balanced" ng-click="joinGroup(group.title)">Join</button>
                   <button class="button button-balanced" ng-click="pingGroup('test')">Ping</button>
-                  <button class="button button-balanced">Leave</button>
-                  <button class="button button-balanced">Invite</button>
+                  <button class="button button-balanced" ng-click="pingGroup('test')">Leave</button>
+                  <button class="button button-balanced" ng-click="pingGroup('test')">Invite</button>
                 </div>
             </ion-item>
           </ion-list>
@@ -62,19 +62,19 @@
      <!-- Modal header bar -->
      <ion-header-bar class="bar-secondary">
        <h1 class="title">New Group</h1>
-       <button class="button button-clear button-balanced" ng-click="closeNewTask()">Cancel</button>
+       <button class="button button-clear button-balanced" ng-click="closeNewGroup()">Cancel</button>
      </ion-header-bar>
 
      <!-- Modal content area -->
      <ion-content>
 
-       <form ng-submit="createTask(task)">
+       <form ng-submit="createGroup(group)">
          <div class="list">
            <label class="item item-input">
-             <input type="text" placeholder="What's your group name?" ng-model="task.title">
+             <input type="text" placeholder="What's your group name?" ng-model="group.title">
            </label>
            <label class="item item-input">
-             <input type="text" placeholder="Describe your group?" ng-model="task.description">
+             <input type="text" placeholder="Describe your group?" ng-model="group.description">
            </label>
          </div>
          <div class="padding">
