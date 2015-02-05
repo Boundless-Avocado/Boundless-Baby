@@ -28,6 +28,7 @@ module.exports = {
     .then(function (user) {
       if (!user) {
         console.log('No user with number ' + phone + ' in database');
+        callback(user);
       } else {
         if (callback) {
           callback(user);
