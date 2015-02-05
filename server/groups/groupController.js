@@ -96,6 +96,20 @@ module.exports = {
     });
   },
 
+  joinPing: function(req, res) {
+    if (req.user) {
+      req.body.username = req.user.username;  // lame hack to not fail on username lookup if already done (i.e. Twilio)
+    }
+    req.group.createPing({UserId: req.user.id});
+    req.group.getUsers()
+    .then(function (users) {
+      users.forEach(function(user) {
+        clients.sendSMS(req.body.username + " has just joined " + req.group.name + "!", user.phone);
+      });
+      res.end('New user joined group!');
+    });
+  },
+
   leave: function(req, res){
     require('../users/userModel.js').findOne({where: {username: req.body.username}})
     .then(function (user) {
