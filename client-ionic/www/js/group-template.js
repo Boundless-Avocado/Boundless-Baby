@@ -1,5 +1,6 @@
 angular.module('boundless.group-template', ['ionic'])
 
+
 .controller('GroupCtrl', function($scope, $timeout, $ionicModal, $ionicSideMenuDelegate) {
 
   $scope.tasks = [];
