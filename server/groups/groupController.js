@@ -134,6 +134,7 @@ module.exports = {
       req.user = user;
       req.group.createPing({UserId: req.user.id});
       clients.sendSMS(req.user.username + ' invited you to join ' + req.group.name + '! Reply with "join ' + req.group.name + '" to join group.'); 
+      res.end('Invite sent!');
     });
   }
 
