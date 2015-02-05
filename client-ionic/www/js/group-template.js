@@ -1,9 +1,9 @@
 angular.module('boundless.group-template', ['ionic'])
 
 
-.controller('GroupCtrl', function($scope, $timeout, $ionicModal, $ionicSideMenuDelegate) {
+.controller('GroupTemplateController', function($scope, $timeout, $ionicModal, $ionicSideMenuDelegate) {
 
-  $scope.tasks = [];
+  $scope.groups = [];
 
   // Create and load the Modal
   $ionicModal.fromTemplateUrl('new-group.html', function(modal) {
@@ -14,8 +14,8 @@ angular.module('boundless.group-template', ['ionic'])
   });
 
   // Called when the form is submitted
-  $scope.createTask = function(task) {
-    $scope.tasks.push({
+  $scope.createGroup = function(group) {
+    $scope.groups.push({
       title: task.title
     });
     $scope.taskModal.hide();
