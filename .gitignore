@@ -34,3 +34,6 @@ client/lib
 
 #API Keys
 config.js
+
+#Assets
+assets/
