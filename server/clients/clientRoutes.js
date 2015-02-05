@@ -61,11 +61,26 @@ module.exports = function (app) {
       // if user is not registered/does not exist
     } else {
       if (req.body.Body.slice(0,7).toUpperCase() === "SIGNUP ") {
-        
+        var messageBody = req.body.Body.split(' ');
+        var newPhoneNum = req.body.From.slice(2);
+        var newUsername = messageBody[1];
+        var newEmail = messageBody[2];
+        var errorHandler = function(err){
+          if(err) {
+            throw err;
+          }
+        }
+
+        req.body.username = newUsername;
+        req.body.email = newEmail;
+        req.body.phone = newPhoneNum;
+
+        userController.signup(req,res,errorHandler);
+
       } else {
-        var phoneNum = req.body.From.slice(2);
-        var signupMessage = 'To join GuacFriends, please respond to this message with "signup <username> <email> <phonenumber>"!';
-        clients.sendSMS(signupMessage,phoneNum); 
+        var newPhoneNum = req.body.From.slice(2);
+        var signupMessage = 'To join GuacFriends, please respond to this message with "signup <username> <email>"';
+        clients.sendSMS(signupMessage,newPhoneNum); 
         res.end('Thanks for signing up!');
       }
     }
