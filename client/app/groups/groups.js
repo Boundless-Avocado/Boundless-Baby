@@ -103,6 +103,25 @@ angular.module('boundless.groups', [])
 			});
 	};
 
+	$scope.leaveGroup = function(groupName) {
+		//only the username is need to ping the group
+		var name = groupName.name;
+		var username = $window.localStorage.getItem('username');
+		console.log(username + ' is leaving group: ' + name)
+		var data = {
+			username: username,
+			name: name
+		};
+
+		Groups.leaveGroup(data)
+			.then(function() {
+				$location.path('/groups');
+			})
+			.catch(function(error) {
+				console.log(error);
+			});
+	};
+
 	$scope.getGroups();
 	$scope.userGroups();
 });	
