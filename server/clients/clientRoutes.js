@@ -56,7 +56,8 @@ module.exports = function (app) {
         } else if (req.body.Body.slice(0,5).toUpperCase() === "SHOW "){
           groupController.find(req.body.Body.slice(5), function (group) {
             if (group.key) {
-              user.getGroups().success(function(groups) {
+              user.getGroups().then(function(groups) {
+                console.log(groups);
                 if (groups.indexOf(group.name) >= 0) {
                   req.group = group;
                   req.body.username = user.username;
