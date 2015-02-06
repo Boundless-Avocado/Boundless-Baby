@@ -103,6 +103,47 @@ angular.module('boundless.groups', [])
 			});
 	};
 
+	$scope.leaveGroup = function(groupName) {
+		//only the username is need to ping the group
+		var name = groupName.name;
+		var username = $window.localStorage.getItem('username');
+		console.log(username + ' is leaving group: ' + name)
+		var data = {
+			username: username,
+			name: name
+		};
+
+		Groups.leaveGroup(data)
+			.then(function() {
+				$location.path('/groups');
+			})
+			.catch(function(error) {
+				console.log(error);
+			});
+	};
+
+	$scope.inviteToGroup = function(groupName) {
+		var username = $window.localStorage.getItem('username');
+		var name = $scope.inviteGroup.name
+		var friendName = $scope.friend.name
+		var number = $scope.friend.number
+		console.log(username + ' invited their friend to: ' + name, number)
+		var data = {
+			username: username,
+			groupName: name,
+			friendName: name,
+			number: number
+		};
+
+		Groups.inviteToGroup(data)
+			.then(function() {
+				$location.path('/groups');
+			})
+			.catch(function(error) {
+				console.log(error);
+			});
+	};
+
 	$scope.getGroups();
 	$scope.userGroups();
 });	

@@ -74,13 +74,39 @@ angular.module('boundless.services', [])
 		})
 	};
 
+	var leaveGroup = function(data){
+		console.log(data.name)
+		return $http({
+				method: 'POST',
+				url: '/api/groups/' + data.name + '/leave/',
+				data: {username: data.username}
+		})
+		.then(function(resp) {
+			return resp.data;
+		})
+	}
+
+	var inviteToGroup = function(data){
+		console.log(data.name)
+		return $http({
+				method: 'POST',
+				url: '/api/invite/groups' + data.name + '/leave/',
+				data: data
+		})
+		.then(function(resp) {
+			return resp.data;
+		})
+	}
+
 	return {
 		getGroups: getGroups,
 		createGroup: createGroup,
 		joinGroup: joinGroup,
 		pingGroup: pingGroup,
 		getUsers: getUsers,
-		userGroups: userGroups
+		userGroups: userGroups,
+		leaveGroup: leaveGroup,
+		inviteToGroup: inviteToGroup
 	};
 })
 

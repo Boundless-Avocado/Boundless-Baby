@@ -5,6 +5,8 @@ angular.module('boundless.group-template', ['ionic'])
 
   $scope.groups = [];
 
+///////////////////NEW-GROUPS MODAL///////////////////////////////////////////
+
   // Create and load the Modal
   $ionicModal.fromTemplateUrl('new-group.html', function(modal) {
     $scope.groupModal = modal;
@@ -14,12 +16,12 @@ angular.module('boundless.group-template', ['ionic'])
   });
 
   // Called when the form is submitted
-  $scope.createGroup = function(group) {
+  $scope.displayGroup = function(group) {
     $scope.groups.push({
-      title: group.title
+      name: group.name
     });
     $scope.groupModal.hide();
-    group.title = "";
+    group.name = "";
   };
 
   // Open our new group modal
@@ -30,6 +32,31 @@ angular.module('boundless.group-template', ['ionic'])
   // Close the new group modal
   $scope.closeNewGroup = function() {
     $scope.groupModal.hide();
+  };
+
+///////////////////INVITE-FRIENDS MODAL///////////////////////////////////////////
+
+  $ionicModal.fromTemplateUrl('invite-friends.html', function(modal) {
+    $scope.inviteModal = modal;
+  }, {
+    scope: $scope,
+    animation: 'slide-in-up'
+  });
+
+  // Called when the form is submitted
+  $scope.inviteFriend = function(group) {
+    $scope.groupModal.hide();
+  };
+
+  // Open our new group modal
+  $scope.openInviteModal = function(group) {
+    $scope.inviteGroup = group
+    $scope.inviteModal.show();
+  };
+
+  // Close the new group modal
+  $scope.closeInviteModal = function() {
+    $scope.inviteModal.hide();
   };
 
 });
