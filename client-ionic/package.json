@@ -1,17 +1,50 @@
 {
-  "name": "todo",
-  "version": "1.0.0",
-  "description": "todo: An Ionic project",
-  "dependencies": {
-    "gulp": "^3.5.6",
-    "gulp-sass": "^0.7.1",
-    "gulp-concat": "^2.2.0",
-    "gulp-minify-css": "^0.3.0",
-    "gulp-rename": "^1.2.0"
+  "name": "boundless-avacado",
+  "version": "0.0.1",
+  "description": "Meetups on the fly",
+  "main": "server.js",
+  "scripts": {
+    "postinstall": "./node_modules/bower/bin/bower install"
+  },
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Boundless-Avocado/Boundless-Avocado.git"
   },
   "devDependencies": {
-    "bower": "^1.3.3",
-    "gulp-util": "^2.2.14",
-    "shelljs": "^0.3.0"
+    "angular-mocks": "^1.3.11",
+    "grunt-istanbul-coverage": "^0.1.1",
+    "jasmine-core": "^2.2.0",
+    "karma": "^0.12.31",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-jasmine": "^0.3.5",
+    "karma-mocha": "^0.1.10",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "mocha": "^1.20.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.4.3",
+    "bower": "~1.3.3",
+    "cookie-parser": "^1.3.3",
+    "express": "^4.4.5",
+    "express-session": "^1.10.2",
+    "grunt-contrib-jshint": "^0.11.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-karma": "^0.10.1",
+    "grunt-mocha-test": "^0.12.7",
+    "grunt-nodemon": "^0.4.0",
+    "grunt-shell": "^1.1.1",
+    "grunt-simple-mocha": "^0.4.0",
+    "morgan": "^1.1.1",
+    "multiparty": "^4.1.1",
+    "mysql": "^2.5.4",
+    "passport": "^0.2.1",
+    "passport-facebook": "^1.0.3",
+    "sendgrid": "1.5.0",
+    "sequelize": "^2.0.0-rc8",
+    "sqlite3": "^3.0.4",
+    "twilio": "^1.10.0"
   }
 }
