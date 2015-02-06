@@ -57,8 +57,14 @@ module.exports = function (app) {
           groupController.find(req.body.Body.slice(5), function (group) {
             if (group.key) {
               user.getGroups().then(function(groups) {
-                console.log(groups);
-                if (groups.indexOf(group.name) >= 0) {
+                var found = false;
+                console.log("THIS IS A GROUPS VARIABLE: ", groups);
+                for (var i = 0; i < groups.length; i++) {
+                  if (group.name === groups[i].dataValues.name) {
+                    found = true;
+                  }
+                }
+                if (found) {
                   req.group = group;
                   req.body.username = user.username;
                   groupController.show(req, res);
