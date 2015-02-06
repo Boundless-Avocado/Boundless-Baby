@@ -10,18 +10,43 @@ module.exports = function (app) {
       if(req.user){
         if (req.body.Body.slice(0,5).toUpperCase() === "JOIN ") {
           groupController.find(req.body.Body.slice(5), function (group) {
-            req.group = group;
-            req.body.username = user.username;
-            groupController.joinPing(req, res);
-            groupController.join(req, res);
+            var messageBody = req.body.Body.split(' ');
+            if (group.key) {
+              if (messageBody[2] === group.key) {
+                req.group = group;
+                req.body.username = user.username;
+                groupController.joinPing(req, res);
+                groupController.join(req, res);
+              } else {
+                var callerNumber = req.body.From.slice(2);
+                clients.sendSMS('This group is private! Please enter key.', callerNumber);
+                res.end('Joining group failed');
+              }
+            } else {
+              req.group = group;
+              req.body.username = user.username;
+              groupController.joinPing(req, res);
+              groupController.join(req, res);
+            }
           });
 
         } else if (req.body.Body.slice(0,7).toUpperCase() === "CREATE ") {
-          req.body = {
-            'name': req.body.Body.slice(7),
-            'username': req.user.username
-          };
+          var messageBody = req.body.Body.split(' ');
+          if (messageBody[2]) {
+            req.body = {
+              'name': req.body.Body.slice(7),
+              'username': req.user.username,
+              'key': messageBody[2].toString()
+            };
+          } else {
+            req.body = {
+              'name': req.body.Body.slice(7),
+              'username': req.user.username,
+              'key': null
+            };
+          }
           groupController.create(req, res);
+
         } else if (req.body.Body.slice(0,6).toUpperCase() === "LEAVE ") {
           groupController.find(req.body.Body.slice(6), function (group) {
             req.group = group;
