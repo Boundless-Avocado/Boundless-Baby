@@ -77,25 +77,19 @@ angular.module('Avocado', ['ionic'])
         }
       }
     })
-  //   .state('friend-detail', {
-  //     url: '/friend/:friendId',
-  //     views: {
-  //       'tab-friends': {
-  //         templateUrl: 'templates/friend-detail.html',
-  //         controller: 'FriendDetailCtrl'
-  //       }
-  //     }
-  //   })
 
-  // .state('tab.account', {
-  //   url: '/account',
-  //   views: {
-  //     'tab-account': {
-  //       templateUrl: 'templates/tab-account.html',
-  //       controller: 'AccountCtrl'
-  //     }
-  //   }
-  //});
+   .state('signup', {
+      url: '/signup',
+      templateUrl: 'templates/tab-signup.html',
+      //controller: '??????'
+    })
+
+
+   .state('signin', {
+      url: '/signin',
+      templateUrl: 'templates/tab-signin.html',
+      //controller: '??????'
+    })
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/login');
