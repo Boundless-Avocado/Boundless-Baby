@@ -74,7 +74,6 @@ module.exports = function (app) {
           req.body.email = newEmail;
           req.body.phone = newPhoneNum;
 
-          console.log('this is a string', req.body);
           userController.signup(req,res,errorHandler);
 
         } else {
