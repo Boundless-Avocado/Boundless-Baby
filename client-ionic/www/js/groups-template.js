@@ -44,12 +44,8 @@ angular.module('boundless.group-template', ['ionic'])
   });
 
   // Called when the form is submitted
-  $scope.displayGroup = function(group) {
-    $scope.groups.push({
-      name: group.name
-    });
+  $scope.inviteFriend = function(group) {
     $scope.groupModal.hide();
-    group.name = "";
   };
 
   // Open our new group modal

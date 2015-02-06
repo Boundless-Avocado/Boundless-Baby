@@ -43,10 +43,10 @@
               
                 <div>
                   {{group.name}}
-                  <button class="button button-balanced" ng-click="joinGroup(group.name)">Join</button>
-                  <button class="button button-balanced" ng-click="pingGroup(group.name)">Ping</button>
+                  <button class="button button-balanced" ng-click="joinGroup(group)">Join</button>
+                  <button class="button button-balanced" ng-click="pingGroup(group)">Ping</button>
                   <button class="button button-balanced" ng-click="leaveGroup(group)">Leave</button>
-                  <button class="button button-balanced" ng-click="openInviteModal()">Invite</button>
+                  <button class="button button-balanced" ng-click="openInviteModal(group)">Invite</button>
                 </div>
             </ion-item>
           </ion-list>
@@ -68,7 +68,7 @@
      <!-- Modal content area -->
      <ion-content>
 
-       <form ng-controller="GroupsController" ng-submit="createGroup(group)">
+       <form ng-controller="GroupsController" ng-submit="createGroup()">
          <div class="list">
            <label class="item item-input">
              <input type="text" placeholder="What's your group name?" ng-model="group.name">
@@ -101,17 +101,19 @@
      <!-- Modal content area -->
      <ion-content>
 
-       <form ng-controller="GroupsController" ng-submit="createGroup(group)">
+       <form name="inviteForm" ng-controller="GroupsController" ng-submit="inviteToGroup()">
          <div class="list">
            <label class="item item-input">
-             <input type="text" placeholder="What's your friend's name?" ng-model="group.name">
+             <input type="text" placeholder="What's your friend's name?" ng-model="friend.name">
            </label>
            <label class="item item-input">
-             <input type="tel" placeholder="What's your friends phone number?" ng-model="group.description">
+             <input name="number" type="number" placeholder="What's your friends phone number?" ng-model="friend.number">
+             <span class="error" ng-show="inviteForm.number.$error.number">Not a valid number!</span>
+
            </label>
          </div>
          <div class="padding">
-           <button type="submit" class="button button-block button-energized" ng-click="displayGroup(group)">Invite Friend</button>
+           <button type="submit" class="button button-block button-energized">Invite Friend</button>
          </div>
        </form>
 
