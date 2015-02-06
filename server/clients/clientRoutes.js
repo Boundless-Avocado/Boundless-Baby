@@ -57,13 +57,7 @@ module.exports = function (app) {
           groupController.find(req.body.Body.slice(5), function (group) {
             if (group.key) {
               user.getGroups().success(function(groups) {
-                var found = false;
-                for (var i = 0; i < groups.length; i++) {
-                  if (user.groups[i].active) {
-                    found = true;
-                  }
-                }
-                if (found) {
+                if (groups.indexOf(group.name) >= 0) {
                   req.group = group;
                   req.body.username = user.username;
                   groupController.show(req, res);
