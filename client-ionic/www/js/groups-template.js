@@ -10,12 +10,14 @@ angular.module('boundless.group-template', ['ionic'])
   // Create and load the Modal
   $ionicModal.fromTemplateUrl('new-group.html', function(modal) {
     $scope.groupModal = modal;
+
   }, {
     scope: $scope,
     animation: 'slide-in-up'
   });
 
   // Called when the form is submitted
+
   $scope.displayGroup = function(group) {
     $scope.groups.push({
       name: group.name
@@ -57,6 +59,7 @@ angular.module('boundless.group-template', ['ionic'])
   // Close the new group modal
   $scope.closeInviteModal = function() {
     $scope.inviteModal.hide();
+
   };
 
 });
