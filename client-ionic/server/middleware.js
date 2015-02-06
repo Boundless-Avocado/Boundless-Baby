@@ -21,7 +21,7 @@ module.exports = function (app, express) {
   app.use(session({ secret: 'keyboard cat'}));
   app.use(passport.initialize());
   app.use(passport.session());
-  app.use(express.static(__dirname + '/../client'));
+  app.use(express.static(__dirname + '/../www'));
 
   app.use('/api/users', userRouter); // use user router for all user request
   app.use('/api/groups', groupRouter); // use group router for group request

@@ -1,9 +1,110 @@
 <ion-view view-title="All Groups">
   <ion-content >
-  <div>
-    <h1>
-      All Groups Page
-    </h1>
-   </div>
+ 
+  <h1>lksfjlskjflsdkjf</h1>
+
+  <ion-side-menus>
+    {% raw %}
+    <!-- Center content -->
+    <ion-side-menu-content>
+      <ion-header-bar class="bar-balanced">
+        <button class="button button-icon">
+          <i class="icon ion-navicon"></i>
+        </button>
+        <h1 class="title">Groups {{groups.name}}</h1>
+        <!-- New Group button-->
+        <button class="button button-icon" ng-click="newGroup()">
+          <i class="icon ion-compose"></i>
+        </button>
+      </ion-header-bar>
+      <ion-content scroll="false">
+        <ion-list>
+          <ion-item ng-repeat="group in groups" ng-controller="GroupsController">
+            
+              <div>
+                {{group.name}}
+                <button class="button button-balanced" ng-click="joinGroup(group)">Join</button>
+                <button class="button button-balanced" ng-click="pingGroup(group)">Ping</button>
+                <button class="button button-balanced" ng-click="leaveGroup(group)">Leave</button>
+                <button class="button button-balanced" ng-click="openInviteModal(group)">Invite</button>
+              </div>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-side-menu-content>
+
+  </ion-side-menus>
+
+  
+  <script id="new-group.html" type="text/ng-template">
+
+    <div class="modal">
+
+      <!-- Modal header bar -->
+      <ion-header-bar class="bar-secondary">
+        <h1 class="title">New Group</h1>
+        <button class="button button-clear button-balanced" ng-click="closeNewGroup()">Cancel</button>
+      </ion-header-bar>
+
+      <!-- Modal content area -->
+      <ion-content>
+
+        <form ng-controller="GroupsController" ng-submit="createGroup()">
+          <div class="list">
+            <label class="item item-input">
+              <input type="text" placeholder="What's your group name?" ng-model="group.name">
+            </label>
+            <label class="item item-input">
+              <input type="text" placeholder="Describe your group?" ng-model="group.description">
+            </label>
+          </div>
+          <div class="padding">
+            <button type="submit" class="button button-block button-balanced" ng-click="displayGroup(group)">Create Group</button>
+          </div>
+        </form>
+
+      </ion-content>
+
+    </div>
+
+  </script>
+
+   <script id="invite-friends.html" type="text/ng-template">
+
+    <div class="modal">
+
+      <!-- Modal header bar -->
+      <ion-header-bar class="bar-secondary">
+        <h1 class="title">Invite your friend!</h1>
+        <button class="button button-clear button-energized" ng-click="closeInviteModal()">Cancel</button>
+      </ion-header-bar>
+
+      <!-- Modal content area -->
+      <ion-content>
+
+        <form name="inviteForm" ng-controller="GroupsController" ng-submit="inviteToGroup()">
+          <div class="list">
+            <label class="item item-input">
+              <input type="text" placeholder="What's your friend's name?" ng-model="friend.name">
+            </label>
+            <label class="item item-input">
+              <input name="number" type="number" placeholder="What's your friends phone number?" ng-model="friend.number">
+              <span class="error" ng-show="inviteForm.number.$error.number">Not a valid number!</span>
+
+            </label>
+          </div>
+          <div class="padding">
+            <button type="submit" class="button button-block button-energized">Invite Friend</button>
+          </div>
+        </form>
+
+      </ion-content>
+
+    </div>
+   </script>
+
+
   </ion-content>
 </ion-view>
+
+
