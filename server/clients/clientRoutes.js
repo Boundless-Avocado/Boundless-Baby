@@ -9,8 +9,8 @@ module.exports = function (app) {
       req.user = user;
       if(req.user){
         if (req.body.Body.slice(0,5).toUpperCase() === "JOIN ") {
-          groupController.find(req.body.Body.slice(5), function (group) {
-            var messageBody = req.body.Body.split(' ');
+          var messageBody = req.body.Body.split(' ');
+          groupController.find(messageBody[1], function (group) {
             if (group.key) {
               if (messageBody[2] === group.key) {
                 req.group = group;
@@ -34,13 +34,13 @@ module.exports = function (app) {
           var messageBody = req.body.Body.split(' ');
           if (messageBody[2]) {
             req.body = {
-              'name': req.body.Body.slice(7),
+              'name': messageBody[1],
               'username': req.user.username,
               'key': messageBody[2].toString()
             };
           } else {
             req.body = {
-              'name': req.body.Body.slice(7),
+              'name': messageBody[1],
               'username': req.user.username,
               'key': null
             };
