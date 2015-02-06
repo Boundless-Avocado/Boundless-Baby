@@ -49,7 +49,8 @@ angular.module('boundless.group-template', ['ionic'])
   };
 
   // Open our new group modal
-  $scope.openInviteModal = function() {
+  $scope.openInviteModal = function(group) {
+    $scope.inviteGroup = group
     $scope.inviteModal.show();
   };
 

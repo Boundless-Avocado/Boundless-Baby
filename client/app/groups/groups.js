@@ -123,9 +123,8 @@ angular.module('boundless.groups', [])
 	};
 
 	$scope.inviteToGroup = function(groupName) {
-		console.log(groupName);
 		var username = $window.localStorage.getItem('username');
-		var name = groupName.name
+		var name = $scope.inviteGroup.name
 		var friendName = $scope.friend.name
 		var number = $scope.friend.number
 		console.log(username + ' invited their friend to: ' + name, number)
