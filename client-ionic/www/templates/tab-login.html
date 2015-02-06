@@ -1,9 +1,12 @@
 <ion-view view-title="Login">
   <ion-content >
-  <div>
-    <h1>
-    	Login Page
-    </h2>
+  <div class = "container">
+  	<p class="intro-text">Guac Friends, the fastest way to organize events on the web.</p>
+  	<div class= "signup-signin">
+	  	<button type="submit" ng-click=go('/signup') class="signup button button-balanced button-large">Sign up</button>
+	  	<button type="submit" ng-click=go('/signin') class="signin button button-balanced button-large">Sign in</button>
+  	</div>
+  	
    </div>
   </ion-content>
 </ion-view>
