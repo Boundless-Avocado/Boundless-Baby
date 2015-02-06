@@ -19,7 +19,7 @@ module.exports = function (app) {
                 groupController.join(req, res);
               } else {
                 var callerNumber = req.body.From.slice(2);
-                clients.sendSMS('This group is private! Please enter key.', callerNumber);
+                clients.sendSMS('This group is private! Please respond with "join ' + group.name + ' <key>"', callerNumber);
                 res.end('Joining group failed');
               }
             } else {
@@ -55,9 +55,28 @@ module.exports = function (app) {
           });
         } else if (req.body.Body.slice(0,5).toUpperCase() === "SHOW "){
           groupController.find(req.body.Body.slice(5), function (group) {
-            req.group = group;
-            req.body.username = user.username;
-            groupController.show(req, res);
+            if (group.key) {
+              user.getGroups().success(function(groups) {
+                var found = false;
+                for (var i = 0; i < groups.length; i++) {
+                  if (user.groups[i].active) {
+                    found = true;
+                  }
+                }
+                if (found) {
+                  req.group = group;
+                  req.body.username = user.username;
+                  groupController.show(req, res);
+                } else {
+                  var callerNumber = req.body.From.slice(2);
+                  clients.sendSMS("This group is private! You need to be in the group to see list of members", callerNumber);
+                }
+              });
+            } else {
+              req.group = group;
+              req.body.username = user.username;
+              groupController.show(req, res);
+            }
           });
         } else if(req.body.Body.slice(0,7).toUpperCase() === "INVITE "){
           var messageBody = req.body.Body.split(' ');
@@ -67,6 +86,7 @@ module.exports = function (app) {
             req.group = group;
             req.body.username = user.username;
             req.body.inviteeNumber = inviteeNumber;
+            req.body.key = group.key;
             groupController.invite(req, res);
           });
         // } else if (req.body.Body === "BROWSE"){

@@ -146,7 +146,12 @@ module.exports = {
   invite: function(req, res){
     require('../users/userController.js').findByPhone(req.body.inviteeNumber, function(user) {
       req.group.createPing({UserId: req.user.id});
-      clients.sendSMS(req.body.username + ' invited you to join ' + req.group.name + '! Reply with "join ' + req.group.name + '" to join group.', req.body.inviteeNumber);
+      if (req.body.key) {
+        var groupCredentials = req.group.name + ' ' + req.body.key;
+      } else {
+        var groupCredentials = req.group.name;
+      }
+      clients.sendSMS(req.body.username + ' invited you to join ' + req.group.name + '! Reply with "join ' + groupCredentials + '" to join group.', req.body.inviteeNumber);
       res.end('Invite sent!');
     });
   }
