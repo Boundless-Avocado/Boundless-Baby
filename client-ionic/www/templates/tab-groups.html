@@ -1,25 +1,18 @@
 <ion-view view-title="All Groups">
-  <ion-content >
- 
-  <h1>lksfjlskjflsdkjf</h1>
 
-  <ion-side-menus>
-    {% raw %}
-    <!-- Center content -->
-    <ion-side-menu-content>
+  <ion-content scroll="false">
+
       <ion-header-bar class="bar-balanced">
-        <button class="button button-icon">
-          <i class="icon ion-navicon"></i>
-        </button>
-        <h1 class="title">Groups {{groups.name}}</h1>
+        <h1 class="title">Groups</h1>
         <!-- New Group button-->
         <button class="button button-icon" ng-click="newGroup()">
           <i class="icon ion-compose"></i>
         </button>
       </ion-header-bar>
-      <ion-content scroll="false">
+<br><br>
         <ion-list>
-          <ion-item ng-repeat="group in groups" ng-controller="GroupsController">
+      
+          <ion-item ng-repeat="group in groups" ng-controller="GroupTemplateController">
             
               <div>
                 {{group.name}}
@@ -28,12 +21,11 @@
                 <button class="button button-balanced" ng-click="leaveGroup(group)">Leave</button>
                 <button class="button button-balanced" ng-click="openInviteModal(group)">Invite</button>
               </div>
-          </ion-item>
-        </ion-list>
-      </ion-content>
-    </ion-side-menu-content>
 
-  </ion-side-menus>
+          </ion-item>
+        
+  </ion-content>
+   
 
   
   <script id="new-group.html" type="text/ng-template">
