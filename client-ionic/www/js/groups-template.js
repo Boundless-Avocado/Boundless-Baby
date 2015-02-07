@@ -58,6 +58,7 @@ angular.module('boundless.group-template', ['ionic'])
   // Close the new group modal
   $scope.closeInviteModal = function() {
     $scope.inviteModal.hide();
+    friend.name = "";
   };
 
 });
