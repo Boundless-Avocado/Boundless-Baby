@@ -1,14 +1,14 @@
 <ion-view view-title="Login">
   <ion-content scroll="false" >
-  <div class = "container">
+  <div class = "container" ng-controller='BoundlessController'>
   	<p class="intro-text">Guac Friends, the fastest way to organize events on the web.</p>
   	<div class = "signup">
-	  	<button type="submit" ng-click=go('/tab/login') class="button button-block button-balanced button-large">Sign up</button>
+	  	<button type="submit" ng-click=go('/signup') class="button button-block button-balanced button-large">Sign up</button>
     </div>
-	  	<div class = "signin">Have an account? <a href="#">Sign in</a></div>
+	  	<div class = "signin">Have an account? <a href="#" ng-click=go('/signin') >Sign in</a></div>
 
 	  <div class = "facebook-login">
-	  	<button type="submit" ng-click=go('/tab/login') class="button button-block button-balanced button-large" g-click="go('/auth/facebook')">Login with Facebook</button>
+	  	<a href="/auth/facebook"><button type="submit" class="button button-block button-balanced button-large">Login with Facebook</button></a>
 	  </div>
 
    </div>
