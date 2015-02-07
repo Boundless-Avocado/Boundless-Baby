@@ -37,9 +37,9 @@ angular.module('boundless.groups', ['boundless.services'])
 	};
 
 	$scope.createGroup = function() {
-		console.log($scope.data.newGroup)
+		console.log($scope.group.name)
 		//pass groupName & username to create a new group
-		var name = $scope.data.newGroup;
+		var name = $scope.group.name;
 		var username = $window.localStorage.getItem('username');
 		var data = {
 			username: username, 
