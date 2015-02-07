@@ -102,6 +102,15 @@ var app = angular.module('boundless', ['ionic',
     })
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/login');
+  //$urlRouterProvider.otherwise('/tab/login');
 
 })
+
+
+.controller('BoundlessController', ['$scope', '$location', function ($scope, $location) {
+  console.log('GAIA PLEASE');
+  $scope.go = function (path) {
+    $location.path(path);
+  };
+
+}])
