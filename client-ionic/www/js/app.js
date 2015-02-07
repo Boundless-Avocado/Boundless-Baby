@@ -91,7 +91,7 @@ var app = angular.module('boundless', ['ionic',
    .state('signup', {
       url: '/signup',
       templateUrl: 'templates/tab-signup.html',
-      //controller: '??????'
+      controller: 'BoundlessController'
     })
 
 
