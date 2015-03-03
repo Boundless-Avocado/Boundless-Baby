@@ -13,9 +13,10 @@ GuacFriends is the easiest way to form groups of common interest & invite your g
 
 ## Team
 
-  - __Product Owner__: [David Ernst](https://github.com/dsernst)
-  - __Scrum Master__: [Michael DeLucco](https://github.com/delucco)
-  - __Test Champion__: [Peter Kim](https://github.com/p3tuh)
+  - __Product Owner__: [Ryan McCarter](https://github.com/mccarter)
+  - __Scrum Master__: [Sasha Bayan](https://github.com/SashaBayan)
+  - __Developer__: [Hou Chia](https://github.com/kchia)
+  - __Developer__: [Shin Uesugi](https://github.com/p3tuh)
 
 ## Table of Contents
 
